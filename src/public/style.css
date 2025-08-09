@@ -216,3 +216,8 @@ emoji-picker {
   margin-top: auto;
   margin-bottom: auto;
 }
+
+.emojilimit {
+  margin: 0 10px;
+  align-self: center;
+}

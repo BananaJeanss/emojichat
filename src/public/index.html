@@ -17,22 +17,17 @@
       <div id="menuPlaceholder"></div>
     </div>
     <div class="chat-container">
-      <div
-        class="messages"
-        id="messages"
-        style="height: 90%; width: 100%"
-      >
-    <div class="messageTemplate">
-        <p class="pfptemplate">🪙</p>
-        <div class="messageContent">
-          <span class="name">👤</span>
-          <hr />
-          <span class="text">💬💬💬💬💬💬💬💬💬💬💬💬</span>
+      <div class="messages" id="messages" style="height: 90%; width: 100%">
+        <div class="messageTemplate">
+          <p class="pfptemplate">🪙</p>
+          <div class="messageContent">
+            <span class="name">👤</span>
+            <hr />
+            <span class="text">💬💬💬💬💬💬💬💬💬💬💬💬</span>
+          </div>
         </div>
       </div>
-
-    </div>
-          <div class="input-container" style="height: 10%">
+      <div class="input-container" style="height: 10%">
         <input
           type="text"
           id="messageInput"
@@ -41,6 +36,7 @@
           disabled
           style="height: 100%; width: 90%"
         />
+        <p class="emojilimit"><span id="emojiCount">0</span>/35</p>
         <button
           id="backspaceButton"
           class="wasdbutton"
@@ -56,6 +52,7 @@
           📩
         </button>
       </div>
+    </div>
     <emoji-picker style="width: 100%; height: 30vh"></emoji-picker>
     <script
       type="module"
