@@ -21,6 +21,13 @@ body {
   min-height: 0;
 }
 
+.floatingheader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .chat-container {
   flex: 1 1 0%;
   min-height: 0;
@@ -72,4 +79,98 @@ emoji-picker {
   flex: 0 0 30vh;
   min-height: 0;
   max-height: 30vh;
+}
+
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.settings-overlay[hidden] {
+  display: none !important;
+}
+
+.settings-modal {
+  background: var(--secondary-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 12px;
+  padding: 12px;
+  width: min(90vw, 420px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: white;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-label {
+  font-size: 1.5rem;
+}
+
+.emoji-input {
+  flex: 1;
+  background: var(--main-color);
+  color: white;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 1.25rem;
+}
+
+.pfp-preview {
+  font-size: 2rem;
+  padding: 2px 8px;
+  border: 1px solid var(--accent-color);
+  background: var(--main-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.emoji-input.is-selected,
+.pfp-preview.is-selected {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.icon-btn {
+  padding: 6px 10px;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--accent-color);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mini-picker {
+  max-height: 30vh;
+}
+
+.avatar-chip {
+  margin-left: 6px;
+  height: 32px;
+  width: 32px;
+  display: inline-flex;
+  border: 1px solid var(--accent-color);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-color);
+  font-size: 1.2rem;
 }
