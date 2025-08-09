@@ -1,7 +1,7 @@
 const messagesEl = document.getElementById("messages");
 const inputEl = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendButton");
-const emojiCountSpan = document.getElementById("emojiCount");
+const emojiBarFill = document.getElementById("emojiBarFill");
 
 // helpers
 function splitGraphemes(str) {
@@ -20,6 +20,17 @@ function onlyEmojis(str) {
 function emojiCount(str) {
   return splitGraphemes(str).filter((g) => /\p{Extended_Pictographic}/u.test(g))
     .length;
+}
+
+function setBar(count) {
+  const max = 35;
+  const pct = Math.max(0, Math.min(1, count / max));
+  if (emojiBarFill) {
+    emojiBarFill.style.height = `${pct * 100}%`;
+    // Map 0→green (120deg), 1→red (0deg)
+    const hue = 120 - 120 * pct;
+    emojiBarFill.style.backgroundColor = `hsl(${hue} 85% 45%)`;
+  }
 }
 
 function appendMessage({ pfp, name, text }) {
@@ -75,7 +86,7 @@ async function sendMessage() {
     if (!res.ok) return;
 
     if (inputEl) inputEl.value = "";
-    if (emojiCountSpan) emojiCountSpan.textContent = "0";
+    setBar(0);
   } catch {
     // ignore
   } finally {
@@ -106,4 +117,12 @@ if (sendBtn) {
   sendBtn.addEventListener("click", sendMessage);
 }
 
+if (inputEl) {
+  inputEl.addEventListener("input", () => {
+    const count = emojiCount(onlyEmojis(inputEl.value || ""));
+    setBar(count);
+  });
+}
+
+setBar(0);
 connectStream();

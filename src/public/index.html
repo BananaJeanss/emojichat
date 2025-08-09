@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>emojichat</title>
-    <meta name="description" content="no text, only emojis." />
+    <title>🗨️💬😃</title>
+    <meta name="description" content="🙊📜 | 🐵😀" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -24,12 +24,14 @@
         <input
           type="text"
           id="messageInput"
-          placeholder="🤔💭..."
+          placeholder="🤔💭"
           autocomplete="off"
           disabled
           style="height: 100%; width: 90%"
         />
-        <p class="emojilimit"><span id="emojiCount">0</span>/35</p>
+        <div class="emoji-bar" aria-hidden="true">
+          <div id="emojiBarFill" class="emoji-bar__fill"></div>
+        </div>
         <button
           id="backspaceButton"
           class="wasdbutton"

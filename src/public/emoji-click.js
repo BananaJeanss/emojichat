@@ -3,7 +3,7 @@ document
   .addEventListener("emoji-click", (event) => {
     const selectedEmoji = event.detail.unicode;
     const input = document.getElementById("messageInput");
-    const emojiCountSpan = document.getElementById("emojiCount");
+    const barFill = document.getElementById("emojiBarFill");
     if (!input) return;
 
     let arr;
@@ -19,7 +19,12 @@ document
     if (arr.length < 35) {
       arr.push(selectedEmoji);
       input.value = arr.join("");
-      if (emojiCountSpan) emojiCountSpan.textContent = arr.length;
+      if (barFill) {
+        const pct = Math.max(0, Math.min(1, arr.length / 35));
+        barFill.style.height = `${pct * 100}%`;
+        const hue = 120 - 120 * pct;
+        barFill.style.backgroundColor = `hsl(${hue} 85% 45%)`;
+      }
       input.focus();
     }
   });

@@ -1,6 +1,6 @@
 document.getElementById("backspaceButton").addEventListener("click", () => {
   const input = document.getElementById("messageInput");
-  const emojiCountSpan = document.getElementById("emojiCount");
+  const barFill = document.getElementById("emojiBarFill");
   if (!input) return;
 
   let arr;
@@ -15,7 +15,12 @@ document.getElementById("backspaceButton").addEventListener("click", () => {
   if (arr.length > 0) arr.pop();
   input.value = arr.join("");
 
-  if (emojiCountSpan) emojiCountSpan.textContent = String(arr.length);
+  if (barFill) {
+    const pct = Math.max(0, Math.min(1, arr.length / 35));
+    barFill.style.height = `${pct * 100}%`;
+    const hue = 120 - 120 * pct;
+    barFill.style.backgroundColor = `hsl(${hue} 85% 45%)`;
+  }
 
   input.focus();
 });
