@@ -1,0 +1,19 @@
+{
+  "name": "emojichat",
+  "version": "1.0.0",
+  "description": "emoji-only web chat",
+  "license": "MIT",
+  "author": "BananaJeanss",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon --watch src --ext js,json,html,css --exec node src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
