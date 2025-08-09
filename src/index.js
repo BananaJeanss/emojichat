@@ -1,5 +1,8 @@
 import express from "express";
 import helmet from "helmet";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,10 +25,7 @@ app.use(
           "'unsafe-eval'",
           "'wasm-unsafe-eval'",
         ],
-        "script-src-elem": [
-          "'self'",
-          "https://cdn.jsdelivr.net",
-        ],
+        "script-src-elem": ["'self'", "https://cdn.jsdelivr.net"],
         // allow EventSource/SSE and CDN data fetches
         "connect-src": ["'self'", "https://cdn.jsdelivr.net"],
         // emoji-picker may spin up workers and load assets
