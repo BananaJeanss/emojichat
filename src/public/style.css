@@ -29,16 +29,25 @@ body {
 }
 
 .chat-container {
-  flex: 1 1 0%;
+  flex: 1 1 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
   padding-top: 10px;
 }
 
+.messages {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
 .input-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
 }
 
 .settings {
@@ -58,6 +67,8 @@ body {
 }
 
 #messageInput {
+  flex: 1 1 auto; /* grow to available space */
+  min-width: 0; /* allow shrinking */
   padding: 10px;
   border: 1px solid var(--accent-color);
   border-radius: 5px;
