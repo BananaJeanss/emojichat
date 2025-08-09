@@ -11,7 +11,8 @@
     "dev": "nodemon --watch src --ext js,json,html,css --exec node src/index.js"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

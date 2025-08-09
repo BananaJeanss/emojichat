@@ -1,4 +1,5 @@
 import express from "express";
+import helmet from "helmet";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,6 +9,34 @@ const __dirname = new URL(".", import.meta.url).pathname;
 // basic security checks
 app.disable("x-powered-by");
 app.use(express.json({ limit: "2kb" }));
+
+// helmet config cause why not
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "script-src": [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+          "'unsafe-eval'",
+          "'wasm-unsafe-eval'",
+        ],
+        "script-src-elem": [
+          "'self'",
+          "https://cdn.jsdelivr.net",
+        ],
+        // allow EventSource/SSE and CDN data fetches
+        "connect-src": ["'self'", "https://cdn.jsdelivr.net"],
+        // emoji-picker may spin up workers and load assets
+        "worker-src": ["'self'", "blob:"],
+        "img-src": ["'self'", "data:", "https://cdn.jsdelivr.net"],
+      },
+    },
+    // Avoid COEP issues with third-party assets
+    crossOriginEmbedderPolicy: false,
+  })
+);
 
 app.use(express.static("src/public"));
 
